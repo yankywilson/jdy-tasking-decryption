@@ -29,10 +29,6 @@ scheme:
 plaintext tasking JSON — i.e. the IP ranges, ports, and CVE/fingerprint rules JDY is
 pointed at.
 
-Implant RE also shows JDY is **not a pure scanner**: the binary carries a `meth_tunnel`
-command-method class and a full **SOCKS4/4a/5/5h** stack, indicating a tasked bot can
-likely act as a **proxy / relay pivot** — extending the capability beyond reconnaissance.
-
 The control cluster is **bounded**: the `jdyfj` self-signed TLS certificate and the
 payload host's listener fingerprint each resolve to only the already-known nodes. No
 un-reported infrastructure was found.
@@ -44,7 +40,6 @@ un-reported infrastructure was found.
 | Finding | Tag |
 |---|---|
 | Tasking scheme: base64 → **AES-128-CBC** → JSON, key `bdb718bdf47cbcde`, IV `0x30`×16 | **CORROBORATED** |
-| **SOCKS tunnel / proxy-pivot capability** (`meth_tunnel` + SOCKS4/4a/5/5h) | **NOVEL** |
 | Command-method dispatch: `meth_tcp` / `meth_udp` / `meth_ssl` / `meth_tunnel` | **CORROBORATED / NOVEL** |
 | Scan-type vocabulary: `port_scan`, `web_scan`, `banner`, `tunnel`, `content` | **CORROBORATED / NOVEL** |
 | Fingerprint-DB update via `/dispatch/v2/dmap/%s` (mmapped archive, `dmap_fp_digest`-gated) | **NOVEL** |
